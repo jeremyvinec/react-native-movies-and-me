@@ -4,7 +4,6 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer } fr
 import Search from '../Components/Search'
 import FilmDetail from '../Components/FilmDetail'
 import Favorites from '../Components/Favorites'
-import Test from '../Components/Test'
 
 const SearchStackNavigator = createStackNavigator({
   Search: {
@@ -30,12 +29,29 @@ const FavoritesStackNavigator = createStackNavigator({
   }
 })
 
-const MoviesTabNavigator = createBottomTabNavigator(
-  {
-    Test: {
-      screen : Test
+const NewsStackNavigator = creatStackNavigator({
+    News: {
+      screen: News,
+      navigationOptions: {
+        title: 'News'
+      }
     },
-    
+    FilmDetail: {
+      screen: FilmDetail
+    }
+})
+
+const MoviesTabNavigator = createBottomTabNavigator({
+    News: {
+      screen: NewsStackNavigator,
+      navigationOptions: {
+        tabBarIcon: () => {
+          return <Image
+            source={require('../Images/ic_fiber_new.png')}
+            style={styles.icon}/>
+        }
+      }
+    },   
     Search: {
       screen: SearchStackNavigator,
       navigationOptions: {
