@@ -18,3 +18,9 @@ export function getFilmDetailFromApi(id){
     .catch((error) => console.error(error));
 }
 
+export function getBestFilmsFromApi (page) {
+    return fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API_TOKEN + '&vote_count.gte=1000&sort_by=release_date.desc&language=fr&page=' + page)
+      .then((response) => response.json())
+      .catch((error) => console.error(error));
+  }
+
